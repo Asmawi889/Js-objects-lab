@@ -158,13 +158,15 @@ After writing this method, call it and pass in a Pokemon object of your choice f
 Solve Exercise 10 here:
 */
 
-// const catchPokemon= ((pokemonObj)=>{
-// game.party.push(pokemonObj)
-// })
+game.catchPokemon = function(pokemonObj) {
+  this.party.push(pokemonObj);
+};
 
-// catchPokemon(pokemon[3])
+const chosenPokemon = pokemon[0]; 
 
-// console.log(game.party)
+game.catchPokemon(chosenPokemon);
+
+console.log(game.party);
 
 console.log('---------------------------------------------------------------')
 /*
@@ -180,15 +182,15 @@ Also, log the `game.items` array to confirm that the pokeball quantity is being 
 Solve Exercise 11 here:
 */
 
-// const catchPokemon= ((pokemonObj)=>{
-//   if(game.party.push(pokemonObj)){
-//     game.items.quantity- 1
-//   }
+const catchPokemon= ((pokemonObj)=>{
+  if(game.party.push(pokemonObj)){
+    game.items.quantity- 1
+  }
 
 
-//   })
-// catchPokemon(pokemon[3])
-// console.log(game.items)
+  })
+catchPokemon(pokemon[3])
+console.log(game.items)
   
   
 
@@ -199,13 +201,18 @@ Exercise 12
 
 Solve Exercise 12 here:
 
-
 */
+console.log("=======================================")
+game.gyms.forEach(gym => {
+  if (gym.difficulty < 6) {
+      gym.completed = true;
+  }
+});
+
+console.log(game.gyms);
 
 
-
-
-
+console.log("=======================================")
 
 /*
 Exercise 13
@@ -230,4 +237,69 @@ For example, if five gym objects have a value of `true` on their `completed` pro
 Solve Exercise 13 here:
 */
 
-//
+function gymStatus(gyms) {
+  const gymTally = {
+      completed: 0,
+      incomplete: 0
+  };
+  gyms.forEach(gym => {
+      if (gym.completed) {
+          gymTally.completed += 1;
+      } else {
+          gymTally.incomplete += 1;
+      }
+  });
+
+  console.log(gymTally);
+}
+
+gymStatus(game.gyms);
+
+console.log("=======================================")
+
+/*
+Exercise 14
+1. Add a `partyCount` method to `game` that counts the number of Pokémon in your party.
+
+This method should:
+  - Not accept any arguments.
+  - Count the number of Pokemon in the party.
+  - return the found number of Pokemon in the party.
+
+Solve Exercise 14 here:
+*/
+
+
+function partyCount(party) {
+  return party.length;
+}
+console.log(partyCount(game.party));
+
+
+/*
+Exercise 15
+1. Now, complete gyms with a difficulty below 8. Reflect on how this is similar to or different from the previous gym exercises.
+(change the value of `complete` in the qualifying objects from false to true).
+
+Solve Exercise 15 here:
+*/
+console.log("=======================================")
+
+game.gyms.forEach(gym => {
+  if (gym.difficulty < 8) {
+      gym.completed = true;
+  }
+});
+
+console.log(game.gyms);
+
+console.log("=======================================")
+
+/*
+Exercise 16
+1. Log the entire `game` object to the console. Take a moment to review the changes you've made throughout the exercises.
+
+
+Solve Exercise 16 here:
+*/
+console.log(game)
